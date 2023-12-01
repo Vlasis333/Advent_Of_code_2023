@@ -8,6 +8,7 @@ namespace AdventOfCode2023
         {
             // Run the puzzle calculations
             new Puzzle01().Calculation();
+            new Puzzle02().Calculation();
 
             // Keep the command window open
             Console.ReadLine();

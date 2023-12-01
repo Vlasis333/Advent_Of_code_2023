@@ -6,7 +6,11 @@ namespace AdventOfCode2023
     {
         static void Main(string[] args)
         {
+            // Run the puzzle calculations
             new Puzzle01().Calculation();
+
+            // Keep the command window open
+            Console.ReadLine();
         }
     }
 }

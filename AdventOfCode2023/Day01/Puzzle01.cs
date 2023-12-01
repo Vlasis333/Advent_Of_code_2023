@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2023.Day01
+﻿using System.Collections.Generic;
+
+namespace AdventOfCode2023.Day01
 {
     public class Puzzle01
     {
@@ -25,7 +27,7 @@
                 int firstDigit = FindFirstDigit(line);
                 int lastDigit = FindLastDigit(line);
 
-                int currentLineValue = firstDigit * 10 + lastDigit;
+                int currentLineValue = int.Parse(firstDigit.ToString() + lastDigit.ToString());
                 totalValue += currentLineValue;
             }
 

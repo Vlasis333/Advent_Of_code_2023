@@ -11,7 +11,12 @@ namespace AdventOfCode2023
             new Day01Puzzle01().Calculation();
             new Day01Puzzle02().Calculation();
 
+            Console.WriteLine();
+
             new Day02Puzzle01().Calculation();
+            new Day02Puzzle02().Calculation();
+
+            Console.WriteLine();
 
             // Keep the command window open
             Console.ReadLine();

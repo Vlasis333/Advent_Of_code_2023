@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AdventOfCode2023.Day02
@@ -10,10 +11,19 @@ namespace AdventOfCode2023.Day02
     {
         public void Calculation()
         {
-            string[] filePath = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
+            string[] puzzleInput = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
 
-            int finalAnswer = CalculateAnswer(filePath);
-            Console.WriteLine($"Day 01 Puzzle 02 Result: {finalAnswer}");
+            List<Game> games = GetGames(puzzleInput);
+            
+            // Possible games static input
+            int red = 12;
+            int green = 13;
+            int blue = 14;
+
+            List<int> possibleGames = FindPossibleGames(games, red, green, blue);
+
+            int finalAnswer = possibleGames.Sum();
+            Console.WriteLine($"Day 02 Puzzle 01 Result: {finalAnswer}");
         }
 
         private static string[] ReadFile(string filePath)
@@ -21,10 +31,75 @@ namespace AdventOfCode2023.Day02
             return File.ReadAllLines(filePath);
         }
 
-        private int CalculateAnswer(string[] filePath)
+        class Game
         {
-            return -1;
+            public int ID { get; set; }
+            public List<Dictionary<string, int>> CubeSets { get; set; }
         }
 
+        static List<Game> GetGames(string[] input)
+        {
+            // Just my way of getting the same and not handling them 1 by 1 in the input file
+            List<Game> games = new();
+
+            foreach (string line in input)
+            {
+                string[] parts = line.Split(':');
+                int gameId = int.Parse(parts[0].Trim().Split(' ')[1]);
+
+                string[] cubeSets = parts[1].Trim().Split(';');
+                List<Dictionary<string, int>> sets = new();
+
+                foreach (string set in cubeSets)
+                {
+                    Dictionary<string, int> cubeCounts = new();
+                    string[] cubes = set.Trim().Split(',');
+                    foreach (string cube in cubes)
+                    {
+                        string[] cubeInfo = cube.Trim().Split(' ');
+                        string color = cubeInfo[1].ToLower();
+                        int count = int.Parse(cubeInfo[0]);
+                        cubeCounts[color] = count;
+                    }
+                    sets.Add(cubeCounts);
+                }
+
+                Game game = new Game { ID = gameId, CubeSets = sets };
+                games.Add(game);
+            }
+
+            return games;
+        }
+
+        static List<int> FindPossibleGames(List<Game> games, int targetRed, int targetGreen, int targetBlue)
+        {
+            // Logic of the solution
+            List<int> possibleGames = new();
+
+            foreach (Game game in games)
+            {
+                bool isPossible = true;
+
+                foreach (var cubeSet in game.CubeSets)
+                {
+                    int redCount = cubeSet.ContainsKey("red") ? cubeSet["red"] : 0;
+                    int greenCount = cubeSet.ContainsKey("green") ? cubeSet["green"] : 0;
+                    int blueCount = cubeSet.ContainsKey("blue") ? cubeSet["blue"] : 0;
+
+                    if (redCount > targetRed || greenCount > targetGreen || blueCount > targetBlue)
+                    {
+                        isPossible = false;
+                        break;
+                    }
+                }
+
+                if (isPossible)
+                {
+                    possibleGames.Add(game.ID);
+                }
+            }
+
+            return possibleGames;
+        }
     }
 }

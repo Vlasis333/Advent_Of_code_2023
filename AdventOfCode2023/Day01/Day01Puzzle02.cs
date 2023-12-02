@@ -10,10 +10,10 @@ namespace AdventOfCode2023.Day01
     {
         public void Calculation()
         {
-            string[] puzzleInput = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
+            string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay01.txt");
 
             int finalAnswer = CalculateAnswer(puzzleInput);
-            Console.WriteLine($"Day 01 Puzzle 02 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 02 Result: {finalAnswer}");
         }
 
         private static string[] ReadFile(string filePath)

@@ -11,7 +11,7 @@ namespace AdventOfCode2023.Day02
     {
         public void Calculation()
         {
-            string[] puzzleInput = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
+            string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay02.txt");
 
             List<Game> games = GetGames(puzzleInput);
             
@@ -23,7 +23,7 @@ namespace AdventOfCode2023.Day02
             List<int> possibleGames = FindPossibleGames(games, red, green, blue);
 
             int finalAnswer = possibleGames.Sum();
-            Console.WriteLine($"Day 02 Puzzle 01 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 01 Result: {finalAnswer}");
         }
 
         private static string[] ReadFile(string filePath)

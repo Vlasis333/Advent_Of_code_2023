@@ -2,7 +2,7 @@
 
 namespace AdventOfCode2023.Day01
 {
-    public class Puzzle01
+    public class Day01Puzzle01
     {
         public void Calculation()
         {

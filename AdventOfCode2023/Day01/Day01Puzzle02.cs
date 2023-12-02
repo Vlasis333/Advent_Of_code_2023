@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2023.Day01
 {
-    internal class Puzzle02
+    internal class Day01Puzzle02
     {
         public void Calculation()
         {
@@ -21,7 +21,7 @@ namespace AdventOfCode2023.Day01
             return File.ReadAllLines(filePath);
         }
 
-        public int CalculateAnswer(string[] fileData)
+        private int CalculateAnswer(string[] fileData)
         {
             List<int> lineValues = new List<int>();
 

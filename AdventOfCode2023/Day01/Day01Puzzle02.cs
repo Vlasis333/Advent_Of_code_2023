@@ -10,9 +10,9 @@ namespace AdventOfCode2023.Day01
     {
         public void Calculation()
         {
-            string[] filePath = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
+            string[] puzzleInput = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
 
-            int finalAnswer = CalculateAnswer(filePath);
+            int finalAnswer = CalculateAnswer(puzzleInput);
             Console.WriteLine($"Day 01 Puzzle 02 Result: {finalAnswer}");
         }
 

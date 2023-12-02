@@ -7,9 +7,9 @@ namespace AdventOfCode2023.Day01
         public void Calculation()
         {
             // For you to work just by copy paste you need to get your own input and paste it to a txt file (named input daa :P)
-            string[] filePath = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
+            string[] puzzleInput = ReadFile("C:\\Users\\vlasi\\Downloads\\input.txt");
 
-            int finalAnswer = CalculateAnswer(filePath);
+            int finalAnswer = CalculateAnswer(puzzleInput);
             Console.WriteLine($"Day 01 Puzzle 01 Result: {finalAnswer}");
         }
 

@@ -12,8 +12,7 @@ namespace AdventOfCode2023.Day01
         {
             string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay01.txt");
 
-            int finalAnswer = CalculateAnswer(puzzleInput);
-            Console.WriteLine($"Puzzle 02 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 02 Result: {CalculateAnswer(puzzleInput)}");
         }
 
         private static string[] ReadFile(string filePath)

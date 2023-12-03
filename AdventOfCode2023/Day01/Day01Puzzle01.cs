@@ -9,8 +9,7 @@ namespace AdventOfCode2023.Day01
             // For you to work just by copy paste you need to get your own input and paste it to a txt file (named input daa :P)
             string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay01.txt");
 
-            int finalAnswer = CalculateAnswer(puzzleInput);
-            Console.WriteLine($"Puzzle 01 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 01 Result: {CalculateAnswer(puzzleInput)}");
         }
 
         private static string[] ReadFile(string filePath)

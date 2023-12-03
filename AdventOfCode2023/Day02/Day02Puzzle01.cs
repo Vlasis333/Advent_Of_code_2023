@@ -20,10 +20,7 @@ namespace AdventOfCode2023.Day02
             int green = 13;
             int blue = 14;
 
-            List<int> possibleGames = FindPossibleGames(games, red, green, blue);
-
-            int finalAnswer = possibleGames.Sum();
-            Console.WriteLine($"Puzzle 01 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 01 Result: {FindPossibleGames(games, red, green, blue).Sum()}");
         }
 
         private static string[] ReadFile(string filePath)

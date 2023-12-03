@@ -15,10 +15,7 @@ namespace AdventOfCode2023.Day02
 
             List<Game> games = GetGames(puzzleInput);
 
-            List<int> possibleGames = FindMaxOfEachCube(games);
-
-            int finalAnswer = possibleGames.Sum();
-            Console.WriteLine($"Puzzle 02 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 02 Result: {FindMaxOfEachCube(games).Sum()}");
         }
 
         private static string[] ReadFile(string filePath)

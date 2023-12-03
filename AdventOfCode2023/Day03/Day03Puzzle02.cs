@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2023.Day02
 {
-    public class Day03Puzzle02
+    public class Day03Puzzle02 : IPuzzle
     {
         public void Calculation()
         {
@@ -21,5 +21,6 @@ namespace AdventOfCode2023.Day02
         {
             return File.ReadAllLines(filePath);
         }
+
     }
 }

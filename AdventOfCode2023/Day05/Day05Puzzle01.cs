@@ -38,7 +38,7 @@ namespace AdventOfCode2023
 
             List<string> locationMappings = parts.Skip(1).ToList();
 
-            List<(long, long, long)[]> mappingFunctions = locationMappings
+            List<(long, long, long)[]> mappings = locationMappings
                 .Select(s => s.Split('\n').Skip(1)
                     .Select(line => line.Split().Select(long.Parse).ToArray())
                     .Select(arr => (arr[0], arr[1], arr[2]))
@@ -49,9 +49,9 @@ namespace AdventOfCode2023
             for (int i = 0; i < initialSeeds.Count; i++)
             {
                 long currectSeed = initialSeeds[i];
-                foreach (var funcTuples in mappingFunctions)
+                foreach (var currentMapping in mappings)
                 {
-                    currectSeed = ApplyFunctions(currectSeed, funcTuples);
+                    currectSeed = ApplyMappingsInRange(currectSeed, currentMapping);
                 }
                 resultMapping.Add(initialSeeds[i], currectSeed);
             }
@@ -72,9 +72,9 @@ namespace AdventOfCode2023
                 .ToList();
         }
 
-        private static long ApplyMappingsInRange(long currectSeed, IEnumerable<(long Destination, long Source, long Size)> mappingTuples)
+        private static long ApplyMappingsInRange(long currectSeed, IEnumerable<(long Destination, long Source, long Size)> currentMappingTuples)
         {
-            foreach (var mapping in mappingTuples)
+            foreach (var mapping in currentMappingTuples)
             {
                 if (IsWithinRange(currectSeed, mapping.Source, mapping.Size))
                 {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2023.Day02
+﻿namespace AdventOfCode2023
 {
     public class Day02Puzzle01 : IPuzzle
     {
@@ -31,10 +24,10 @@ namespace AdventOfCode2023.Day02
         class Game
         {
             public int ID { get; set; }
-            public List<Dictionary<string, int>> CubeSets { get; set; }
+            public List<Dictionary<string, int>>? CubeSets { get; set; }
         }
 
-        static List<Game> GetGames(string[] input)
+        private static List<Game> GetGames(string[] input)
         {
             // Just my way of getting the same and not handling them 1 by 1 in the input file
             List<Game> games = new();
@@ -68,7 +61,7 @@ namespace AdventOfCode2023.Day02
             return games;
         }
 
-        static List<int> FindPossibleGames(List<Game> games, int targetRed, int targetGreen, int targetBlue)
+        private static List<int> FindPossibleGames(List<Game> games, int targetRed, int targetGreen, int targetBlue)
         {
             // Logic of the solution
             List<int> possibleGames = new();

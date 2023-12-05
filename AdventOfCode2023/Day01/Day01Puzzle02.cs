@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2023.Day01
+﻿namespace AdventOfCode2023
 {
     public class Day01Puzzle02 : IPuzzle
     {
@@ -20,7 +14,7 @@ namespace AdventOfCode2023.Day01
             return File.ReadAllLines(filePath);
         }
 
-        private int CalculateAnswer(string[] fileData)
+        private static int CalculateAnswer(string[] fileData)
         {
             List<int> lineValues = new List<int>();
 
@@ -68,7 +62,7 @@ namespace AdventOfCode2023.Day01
             return lineValues.Sum();
         }
 
-        private void SearchAndSet(string line, string word, int value, ref int firstNumericDigit, ref int indexFirstFoundOn, ref int lastNumericDigit, ref int indexLastFoundOn)
+        private static void SearchAndSet(string line, string word, int value, ref int firstNumericDigit, ref int indexFirstFoundOn, ref int lastNumericDigit, ref int indexLastFoundOn)
         {
             // A dum way to check if we have numbers (in text) between the 2 digits found, if yes we replace the values on the referece of the corresponding integer
             int iFirstPosition = line.IndexOf(word, StringComparison.Ordinal);

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AdventOfCode2023.Day01
+﻿namespace AdventOfCode2023
 {
     public class Day01Puzzle01 : IPuzzle
     {
@@ -17,7 +15,7 @@ namespace AdventOfCode2023.Day01
             return File.ReadAllLines(filePath);
         }
 
-        private int CalculateAnswer(string[] fileData)
+        private static int CalculateAnswer(string[] fileData)
         {
             int totalValue = 0;
 
@@ -44,7 +42,7 @@ namespace AdventOfCode2023.Day01
                 }
             }
 
-            return -1; // If no digit is found
+            return -1;
         }
 
         private static int FindLastDigit(string line)
@@ -57,7 +55,7 @@ namespace AdventOfCode2023.Day01
                 }
             }
 
-            return -1; // If no digit is found
+            return -1;
         }
 
     }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2023.Day02
+﻿namespace AdventOfCode2023
 {
     public class Day02Puzzle02 : IPuzzle
     {
@@ -29,7 +22,7 @@ namespace AdventOfCode2023.Day02
             public List<Dictionary<string, int>> CubeSets { get; set; }
         }
 
-        static List<Game> GetGames(string[] input)
+        private static List<Game> GetGames(string[] input)
         {
             List<Game> games = new();
 
@@ -62,7 +55,7 @@ namespace AdventOfCode2023.Day02
             return games;
         }
 
-        static List<int> FindMaxOfEachCube(List<Game> games)
+        private static List<int> FindMaxOfEachCube(List<Game> games)
         {
             // Logic of the solution (minor changes from the first puzzle)
             List<int> maxMultiplicationScore = new List<int>();

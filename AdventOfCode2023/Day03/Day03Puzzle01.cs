@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace AdventOfCode2023.Day02
+﻿namespace AdventOfCode2023
 {
     public class Day03Puzzle01 : IPuzzle
     {
@@ -14,10 +6,7 @@ namespace AdventOfCode2023.Day02
         {
             string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay03.txt");
 
-            // Calculate the sum of part numbers
-            int finalAnswer = CalculateAnswer(puzzleInput);
-
-            Console.WriteLine($"Puzzle 01 Result: {finalAnswer}");
+            Console.WriteLine($"Puzzle 01 Result: {CalculateAnswer(puzzleInput)}");
         }
 
         private static string[] ReadFile(string filePath)
@@ -25,48 +14,79 @@ namespace AdventOfCode2023.Day02
             return File.ReadAllLines(filePath);
         }
 
-
-        private int CalculateAnswer(string[] fileData)
+        private static int CalculateAnswer(string[] fileData)
         {
-            // I know same loop as in puzzle of Day 01 but with vanila loop to be able to get previous and next row
-            int totalValue = 0;
+            List<int> partValues = new ();
+            HashSet<(int, int)> partCoordinates = new ();
 
-            for (int i = 0; i < fileData.Length; i++)
+            for (int row = 0; row < fileData.Length; row++)
             {
-                totalValue += GetAllPartNumbers(fileData[i - 1], fileData[i], fileData[i + 1]);
+                for (int col = 0; col < fileData[row].Length; col++)
+                {
+                    char currentChar = fileData[row][col];
+
+                    // Skip digits and dots
+                    if (char.IsDigit(currentChar) || currentChar == '.')
+                    {
+                        continue;
+                    }
+
+                    FindAdjacentParts(fileData, ref partCoordinates, row, col);
+                }
             }
 
-            return totalValue;
+            ExtractPartValues(fileData, partCoordinates, ref partValues);
+
+            return partValues.Sum();
         }
 
-        private int GetAllPartNumbers(string previousRow, string currentRow, string nextRow)
+        private static void FindAdjacentParts(string[] fileData, ref HashSet<(int, int)> partCoordinates, int row, int col)
         {
-            int symbolIndex = FindSymbolIndex(currentRow);
-            if (symbolIndex >= 0)
+            for (int dynamicRow = row - 1; dynamicRow <= row + 1; dynamicRow++)
             {
+                for (int dynamicCol = col - 1; dynamicCol <= col + 1; dynamicCol++)
+                {
+                    if (IsValidPartCoordinate(fileData, dynamicRow, dynamicCol))
+                    {
+                        int adjustedCol = AdjustColumnToPart(fileData, dynamicRow, dynamicCol);
+                        partCoordinates.Add((dynamicRow, adjustedCol));
+                    }
+                }
+            }
+        }
 
+        private static bool IsValidPartCoordinate(string[] fileData, int row, int col)
+        {
+            return row >= 0 && row < fileData.Length && col >= 0 && col < fileData[row].Length && char.IsDigit(fileData[row][col]);
+        }
+
+        private static int AdjustColumnToPart(string[] fileData, int row, int col)
+        {
+            int currentColumn = col;
+
+            while (currentColumn > 0 && char.IsDigit(fileData[row][currentColumn - 1]))
+            {
+                currentColumn--;
             }
 
-            return 0;
+            return currentColumn;
         }
 
-        private int FindPartNumbers()
+        private static void ExtractPartValues(string[] fileData, HashSet<(int, int)> partCoordinates, ref List<int> partValues)
         {
-
-        }
-
-        private int FindSymbolIndex(string input)
-        {
-            string pattern = @"[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-|=]";
-
-            Match match = Regex.Match(input, pattern);
-
-            if (match.Success)
+            foreach ((int row, int col) in partCoordinates)
             {
-                return match.Index;
-            }
+                string value = "";
 
-            return -1;
+                int adjustedCol = col;
+                while (adjustedCol < fileData[row].Length && char.IsDigit(fileData[row][adjustedCol]))
+                {
+                    value += fileData[row][adjustedCol];
+                    adjustedCol++;
+                }
+
+                partValues.Add(int.Parse(value));
+            }
         }
     }
 }

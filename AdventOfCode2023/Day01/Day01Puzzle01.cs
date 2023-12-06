@@ -1,13 +1,11 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
-namespace AdventOfCode2023
+﻿namespace AdventOfCode2023
 {
     public class Day01Puzzle01 : IPuzzle
     {
         public void Calculation()
         {
             // For you to work just by copy paste you need to get your own input and paste it to a txt file (named input daa :P)
-            string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay01.txt");
+            string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay01.txt")));
 
             Console.WriteLine($"Puzzle 01 Result: {CalculateAnswer(puzzleInput)}");
         }

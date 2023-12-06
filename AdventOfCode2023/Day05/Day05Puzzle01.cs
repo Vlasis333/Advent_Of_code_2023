@@ -4,7 +4,7 @@
     {
         public void Calculation()
         {
-            string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay05.txt");
+            string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay05.txt")));
 
             Console.WriteLine($"Puzzle 01 Result: {CalculateAnswer(puzzleInput)}");
         }

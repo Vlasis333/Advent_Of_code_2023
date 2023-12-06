@@ -1,14 +1,14 @@
 ﻿namespace AdventOfCode2023
 {
     public class Day05Puzzle02 : IPuzzle
-    {        
-        class Path
+    {
+        class SeedPath
         {
             public long Start { get; }
             public long End { get; }
             public long Offset { get; }
 
-            public Path(long start, long end, long offset)
+            public SeedPath(long start, long end, long offset)
             {
                 Start = start;
                 End = end;
@@ -30,7 +30,7 @@
 
         public void Calculation()
         {
-            string[] puzzleInput = ReadFile(@"C:\Users\vlasi\Desktop\Main Files\Projects\Code Base\Console\AdventOfCode2023\AdventOfCode2023 Inputs\inputDay05.txt");
+            string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay05.txt")));
 
             Console.WriteLine($"Puzzle 02 Result: {CalculateAnswer(puzzleInput)}");
         }
@@ -44,8 +44,8 @@
         {
             List<long> initialSeeds = GetInitialSeeds(fileData);
             var seedsPaths = GetStartEndOfSeedsMap(initialSeeds);
-            
-            List<List<Path>> totalDataPaths = GetFileData(fileData);
+
+            List<List<SeedPath>> totalDataPaths = GetFileData(fileData);
 
             long min = long.MaxValue;
 
@@ -60,7 +60,7 @@
             return min;
         }
 
-        private static long FindMin(List<List<Path>> totalDataPaths, long min, long start, long end)
+        private static long FindMin(List<List<SeedPath>> totalDataPaths, long min, long start, long end)
         {
             // Main logic
             // Disclaimer: I could not find a better solution than to just loop everything searching for the min value
@@ -69,9 +69,9 @@
                 long currentStart = i;
                 long skipCount = long.MaxValue;
 
-                foreach (List<Path> dataPaths in totalDataPaths)
+                foreach (List<SeedPath> dataPaths in totalDataPaths)
                 {
-                    foreach (Path path in dataPaths)
+                    foreach (SeedPath path in dataPaths)
                     {
                         if (currentStart >= path.Start && currentStart <= path.End)
                         {
@@ -93,9 +93,9 @@
             return min;
         }
 
-        private static List<List<Path>> GetFileData(string[] fileData)
+        private static List<List<SeedPath>> GetFileData(string[] fileData)
         {
-            var maps = new List<List<Path>>();
+            var maps = new List<List<SeedPath>>();
             bool category = false;
 
             foreach (string line in fileData[1..])
@@ -107,7 +107,7 @@
                 else if (category)
                 {
                     category = false;
-                    maps.Add(new List<Path>());
+                    maps.Add(new List<SeedPath>());
                 }
                 else
                 {
@@ -118,13 +118,13 @@
             return maps;
         }
 
-        private static Path GetRangeLine(string line)
+        private static SeedPath GetRangeLine(string line)
         {
             var parts = line.Split(' ');
             long start = long.Parse(parts[0]);
             long end = long.Parse(parts[1]);
             long offSet = long.Parse(parts[2]);
-            return new Path(end, end + offSet - 1, start - end);
+            return new SeedPath(end, end + offSet - 1, start - end);
         }
 
         private static List<long> GetInitialSeeds(string[] fileData)
@@ -152,7 +152,7 @@
                 seedsList.Add(new Seed(start, end));
             }
 
-            return seedsList.ToArray();             
+            return seedsList.ToArray();
         }
     }
 }

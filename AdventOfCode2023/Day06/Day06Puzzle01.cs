@@ -19,26 +19,6 @@
         {
             return File.ReadAllLines(filePath);
         }
-
-        private static List<BoatRaceData> PopulateBoatData(string[] inputArray)
-        {
-            // Basic to split the data (2 lines) into the entity
-            List<BoatRaceData> boatRaces = new ();
-
-            string[] timeValues = inputArray[0].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-            string[] distanceValues = inputArray[1].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-            for (int i = 1; i < timeValues.Length; i++)
-            {
-                boatRaces.Add(new BoatRaceData
-                {
-                    Time = int.Parse(timeValues[i]),
-                    Distance = int.Parse(distanceValues[i])
-                });
-            }
-
-            return boatRaces;
-        }
         
         private static int CalculateAnswer(string[] fileData)
         {
@@ -60,6 +40,26 @@
             }
 
             return result;
+        }
+
+        private static List<BoatRaceData> PopulateBoatData(string[] inputArray)
+        {
+            // Basic to split the data (2 lines) into the entity
+            List<BoatRaceData> boatRaces = new();
+
+            string[] timeValues = inputArray[0].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] distanceValues = inputArray[1].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 1; i < timeValues.Length; i++)
+            {
+                boatRaces.Add(new BoatRaceData
+                {
+                    Time = int.Parse(timeValues[i]),
+                    Distance = int.Parse(distanceValues[i])
+                });
+            }
+
+            return boatRaces;
         }
     }
 }

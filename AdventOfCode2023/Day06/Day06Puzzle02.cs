@@ -21,7 +21,7 @@
             return File.ReadAllLines(filePath);
         }
 
-        private long CalculateAnswer(string[] fileData)
+        private static long CalculateAnswer(string[] fileData)
         {
             // Very similar to part 1 but we have 1 race (and working with long)
             BoatRaceData boatRace = PopulateBoatData(fileData);

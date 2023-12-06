@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2023
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace AdventOfCode2023
 {
     public class Day01Puzzle01 : IPuzzle
     {

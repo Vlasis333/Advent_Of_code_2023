@@ -16,8 +16,8 @@
 
         private static int CalculateAnswer(string[] fileData)
         {
-            List<int> partValues = new ();
-            HashSet<(int, int)> partCoordinates = new ();
+            List<int> partValues = new();
+            HashSet<(int, int)> partCoordinates = new();
 
             for (int row = 0; row < fileData.Length; row++)
             {

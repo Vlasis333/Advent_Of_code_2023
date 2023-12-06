@@ -1,5 +1,4 @@
-﻿using System;
-namespace AdventOfCode2023
+﻿namespace AdventOfCode2023
 {
     public class Day05Puzzle01 : IPuzzle
     {
@@ -19,7 +18,7 @@ namespace AdventOfCode2023
         {
             List<long> initialSeeds = GetInitialSeeds(fileData);
             Dictionary<long, long> seedToLocationMapping = GetSeedToLocationMapping(fileData, initialSeeds);
-            List<long> lowestLocations = new ();
+            List<long> lowestLocations = new();
 
             // Spliting string at this point is the same method, only diffrence is where we split
             foreach (long seed in initialSeeds)
@@ -45,7 +44,7 @@ namespace AdventOfCode2023
                     .ToArray())
                 .ToList();
 
-            Dictionary<long, long> resultMapping = new ();
+            Dictionary<long, long> resultMapping = new();
             for (int i = 0; i < initialSeeds.Count; i++)
             {
                 long currectSeed = initialSeeds[i];
@@ -86,6 +85,7 @@ namespace AdventOfCode2023
 
         private static bool IsWithinRange(long value, long start, long size)
         {
+            // Check if we are within range
             return start <= value && value < start + size;
         }
 

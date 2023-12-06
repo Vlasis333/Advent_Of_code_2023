@@ -2,7 +2,7 @@
 {
     public class Day04Puzzle02 : IPuzzle
     {
-        // Same as part 1, byt added cardId and a count of copies
+        // Same as part 1, but added cardId and a count of copies
         private static readonly List<(int id, int[] leftNumbers, int[] rightNumbers, int countOfCopies)> Cards = new();
 
         public void Calculation()

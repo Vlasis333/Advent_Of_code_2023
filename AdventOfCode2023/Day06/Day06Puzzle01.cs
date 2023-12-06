@@ -24,18 +24,14 @@
         {
             // Main logic
             List<BoatRaceData> boatRaces = PopulateBoatData(fileData);
-
             int result = 1;
 
             foreach (var boatRace in boatRaces)
             {
-                int remainingTime = boatRace.Time;
-                int remainingDistance = boatRace.Distance;
-
-                result *= Enumerable.Range(0, boatRace.Time + 1).Count(time =>
+                result *= Enumerable.Range(0, boatRace.Time).Count(record =>
                 {
-                    int distanceCovered = (boatRace.Time - time) * time;
-                    return distanceCovered > remainingDistance;
+                    int distanceCovered = (boatRace.Time - record) * record;
+                    return distanceCovered > boatRace.Distance;
                 });
             }
 

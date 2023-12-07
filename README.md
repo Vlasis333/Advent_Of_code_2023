@@ -1,6 +1,6 @@
 ## Advent Of Code 2023
 
-Not much to say, solutions for [Advent of Code](https://adventofcode.com/) using C#. just to have fun at evenings. <br>
+Not much to say, puzzle solutions this year's [Advent of Code](https://adventofcode.com/) using C#. just to have fun at evenings. <br>
 <br>
 
 ## Project Structure

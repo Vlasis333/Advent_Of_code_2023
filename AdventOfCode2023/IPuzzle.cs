@@ -8,6 +8,6 @@ namespace AdventOfCode2023
 {
     public interface IPuzzle
     {
-        void Calculation();
+        void Initialize();
     }
 }

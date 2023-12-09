@@ -9,7 +9,7 @@
             public long Distance { get; set; }
         }
 
-        public void Calculation()
+        public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay06.txt")));
 

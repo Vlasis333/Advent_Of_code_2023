@@ -21,7 +21,7 @@
             public int Bid { get; set; }
         }
 
-        public void Calculation()
+        public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay07.txt")));
 
@@ -45,7 +45,7 @@
                 string handPart = parts[0];
                 int bidPart = int.Parse(parts[1]);
 
-                HandType handTypePart = GetHandType(handPart, "J");
+                HandType handTypePart = GetHandType(handPart);
                 int weightPart = CalculateWeight(handPart, "23456789TQKA"); // Removed J from the card order
 
                 hands.Add(new HandData
@@ -69,10 +69,10 @@
             return totalValue;
         }
 
-        private static HandType GetHandType(string hand, string joker)
+        private static HandType GetHandType(string hand)
         {
             // Same as part 1, but we calculate total jokers on each card
-            string handWithoutJokers = hand.Replace(joker, "");
+            string handWithoutJokers = hand.Replace("J", ""); // removing J so hand is same with the cardOrder
             int numJokers = hand.Length - handWithoutJokers.Length;
 
             Dictionary<HandType, int> cardCounts = new ();

@@ -28,7 +28,7 @@
             }
         }
 
-        public void Calculation()
+        public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay05.txt")));
 

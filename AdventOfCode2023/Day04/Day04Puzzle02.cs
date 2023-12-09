@@ -5,7 +5,7 @@
         // Same as part 1, but added cardId and a count of copies
         private static readonly List<(int id, int[] leftNumbers, int[] rightNumbers, int countOfCopies)> Cards = new();
 
-        public void Calculation()
+        public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay04.txt")));
 

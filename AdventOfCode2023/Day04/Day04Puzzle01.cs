@@ -6,7 +6,7 @@
         // Used to save all the numbers and find the score
         private static readonly List<(int[] leftNumbers, int[] rightNumbers)> Cards = new();
 
-        public void Calculation()
+        public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay04.txt")));
 

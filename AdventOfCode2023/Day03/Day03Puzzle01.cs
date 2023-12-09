@@ -2,7 +2,7 @@
 {
     public class Day03Puzzle01 : IPuzzle
     {
-        public void Calculation()
+        public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay03.txt")));
 

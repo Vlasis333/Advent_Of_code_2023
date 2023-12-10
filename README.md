@@ -24,5 +24,6 @@ PS: At some point, I found myself using a bunch of Items (classes) to tackle tri
 | [Day 5](https://adventofcode.com/2023/day/5)  | :star:  | :star:  |
 | [Day 6](https://adventofcode.com/2023/day/6)  | :star:  | :star:  |
 | [Day 7](https://adventofcode.com/2023/day/7)  | :star:  | :star:  |
-| [Day 8](https://adventofcode.com/2023/day/8)  |   |   |
+| [Day 8](https://adventofcode.com/2023/day/8)  | :star:  | :star:  |
 | [Day 9](https://adventofcode.com/2023/day/9)  |   |   |
+| [Day 10](https://adventofcode.com/2023/day/10)  |   |   |

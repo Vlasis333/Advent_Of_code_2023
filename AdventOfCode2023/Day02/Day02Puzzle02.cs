@@ -2,6 +2,12 @@
 {
     public class Day02Puzzle02 : IPuzzle
     {
+        class Game
+        {
+            public int ID { get; set; }
+            public List<Dictionary<string, int>> CubeSets { get; set; }
+        }
+
         public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay02.txt")));
@@ -16,15 +22,9 @@
             return File.ReadAllLines(filePath);
         }
 
-        class Game
-        {
-            public int ID { get; set; }
-            public List<Dictionary<string, int>> CubeSets { get; set; }
-        }
-
         private static List<Game> GetGames(string[] input)
         {
-            List<Game> games = new();
+            List<Game> games = new ();
 
             foreach (string line in input)
             {
@@ -48,7 +48,7 @@
                     sets.Add(cubeCounts);
                 }
 
-                Game game = new Game { ID = gameId, CubeSets = sets };
+                Game game = new () { ID = gameId, CubeSets = sets };
                 games.Add(game);
             }
 
@@ -58,7 +58,7 @@
         private static List<int> FindMaxOfEachCube(List<Game> games)
         {
             // Logic of the solution (minor changes from the first puzzle)
-            List<int> maxMultiplicationScore = new List<int>();
+            List<int> maxMultiplicationScore = new ();
 
             foreach (Game game in games)
             {

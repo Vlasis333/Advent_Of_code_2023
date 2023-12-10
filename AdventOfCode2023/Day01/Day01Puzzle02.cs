@@ -16,7 +16,7 @@
 
         private static int CalculateAnswer(string[] fileData)
         {
-            List<int> lineValues = new List<int>();
+            List<int> lineValues = new ();
 
             foreach (var line in fileData)
             {

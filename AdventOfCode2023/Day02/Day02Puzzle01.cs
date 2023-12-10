@@ -2,6 +2,12 @@
 {
     public class Day02Puzzle01 : IPuzzle
     {
+        class Game
+        {
+            public int ID { get; set; }
+            public List<Dictionary<string, int>>? CubeSets { get; set; }
+        }
+
         public void Initialize()
         {
             string[] puzzleInput = ReadFile(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Inputs\inputDay02.txt")));
@@ -19,12 +25,6 @@
         private static string[] ReadFile(string filePath)
         {
             return File.ReadAllLines(filePath);
-        }
-
-        class Game
-        {
-            public int ID { get; set; }
-            public List<Dictionary<string, int>>? CubeSets { get; set; }
         }
 
         private static List<Game> GetGames(string[] input)
@@ -54,7 +54,7 @@
                     sets.Add(cubeCounts);
                 }
 
-                Game game = new Game { ID = gameId, CubeSets = sets };
+                Game game = new () { ID = gameId, CubeSets = sets };
                 games.Add(game);
             }
 
@@ -64,7 +64,7 @@
         private static List<int> FindPossibleGames(List<Game> games, int targetRed, int targetGreen, int targetBlue)
         {
             // Logic of the solution
-            List<int> possibleGames = new();
+            List<int> possibleGames = new ();
 
             foreach (Game game in games)
             {
